@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroPharmAI - Accelerating Drug Discovery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            color: #1e293b; /* Dark slate gray text */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50 rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo - Unique SVG Icon with Company Name -->
+            <a href="#" class="flex items-center space-x-2 text-indigo-600">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2c-3.31 0-6 2.69-6 6 0 2.22 1.2 4.16 3 5.2V22l3-3 3 3v-8.8c1.8-1.04 3-2.98 3-5.2 0-3.31-2.69-6-6-6z"/>
+                    <path d="M12 6.5L10 9l4 0l-2 2"></path> <!-- Represents a simplified circuit or neural connection -->
+                </svg>
+                <span class="text-2xl font-bold">NeuroPharmAI</span>
+            </a>
+
+            <!-- Navigation Links (Hidden on mobile, shown on larger screens) -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#problem" class="text-gray-700 hover:text-indigo-600 transition duration-300">The Problem</a>
+                <a href="#solution" class="text-gray-700 hover:text-indigo-600 transition duration-300">Our Solution</a>
+                <a href="#products" class="text-gray-700 hover:text-indigo-600 transition duration-300">Products</a>
+                <a href="#vision" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg">Our Vision</a>
+            </div>
+
+            <!-- Mobile Menu Button (Hamburger Icon) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white mt-2 py-2 rounded-lg shadow-lg">
+            <a href="#problem" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">The Problem</a>
+            <a href="#solution" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Our Solution</a>
+            <a href="#products" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Products</a>
+            <a href="#vision" class="block px-4 py-2 text-indigo-600 hover:bg-indigo-50">Our Vision</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 md:py-32 text-center rounded-b-lg shadow-xl">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                Accelerating Drug Discovery with Intelligent Algorithms
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-90">
+                NeuroPharmAI is an AI-first pharmaceutical technology company revolutionizing drug discovery by enabling faster, more accurate predictions at every stage of development.
+            </p>
+            <a href="#solution" class="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition duration-300 ease-in-out">
+                Explore Our Solutions
+            </a>
+        </div>
+    </header>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-16 md:py-24 bg-white rounded-lg shadow-md mx-4 md:mx-auto my-8 max-w-6xl">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">The Challenge in Drug Development</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Problem 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-red-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">High Failure Rates</h3>
+                    <p class="text-gray-600 text-center">Over 90% of drug candidates fail in clinical trials, leading to immense losses and delays.</p>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-red-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Exorbitant Costs</h3>
+                    <p class="text-gray-600 text-center">Traditional R&D costs upwards of $2 billion per successful drug, a major barrier to innovation.</p>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-red-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Protracted Timelines</h3>
+                    <p class="text-gray-600 text-center">The average drug takes 10-15 years to reach market, delaying crucial treatments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-16 md:py-24 bg-gray-100 rounded-lg shadow-md mx-4 md:mx-auto my-8 max-w-6xl">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Our AI-Driven Solution</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="md:order-2">
+                    <!-- Textual representation of AI Platform Diagram -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-gray-700">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Our AI-Driven Platform Stack:</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Data Ingestion Layer:</strong> Handles diverse data inputs (chemical, genomic, literature).</li>
+                            <li><strong>AI/ML Model Training & Execution:</strong> Core engine for predictive and generative AI models.</li>
+                            <li><strong>Output & Candidate Generation:</strong> Delivers high-potential drug candidates and insights.</li>
+                            <li><strong>Integration & APIs:</strong> Seamlessly connects with existing research workflows.</li>
+                            <li><strong>Secure & Scalable Infrastructure:</strong> Built on robust cloud technologies for performance and data integrity.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md:order-1">
+                    <p class="text-lg text-gray-700 mb-6">
+                        Our platform leverages cutting-edge AI for molecular design, predictive toxicology, drug repurposing, and automated biomedical literature mining.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-3">
+                        <li>Incorporating deep learning and generative AI for novel compound creation.</li>
+                        <li>Utilizing systems biology to understand complex interactions.</li>
+                        <li>Streamlining the discovery of safe, effective drug candidates.</li>
+                        <li>Significantly reducing time-to-market for life-saving medications.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Offerings Section -->
+    <section id="products" class="py-16 md:py-24 bg-white rounded-lg shadow-md mx-4 md:mx-auto my-8 max-w-6xl">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Our Product Offerings</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1: MoleculePredict -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-indigo-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 10V6a2 2 0 012-2h10a2 2 0 012 2v4M5 10v4a2 2 0 002 2h10a2 2 0 002-2v-4M5 10h14M12 15v2m-6 0h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">MoleculePredict</h3>
+                    <p class="text-gray-600 text-center">AI-powered small molecule screening and property prediction engine.</p>
+                </div>
+
+                <!-- Product 2: RepurposeNet -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-indigo-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0L3.586 13.586A2 2 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">RepurposeNet</h3>
+                    <p class="text-gray-600 text-center">Deep learning platform for identifying new indications for existing drugs.</p>
+                </div>
+
+                <!-- Product 3: BioNLP Insight Engine -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-indigo-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.523 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.523 18.246 18 16.5 18c-1.747 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">BioNLP Insight Engine</h3>
+                    <p class="text-gray-600 text-center">LLM-powered search and synthesis of biomedical and clinical literature.</p>
+                </div>
+
+                <!-- Product 4: AI Drug Lab (Coming Soon) -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="text-indigo-500 mb-4">
+                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">AI Drug Lab</h3>
+                    <p class="text-gray-600 text-center">(Coming Soon) Collaborative digital twin models for simulating patient-specific responses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Call to Action Section -->
+    <section id="vision" class="bg-indigo-700 text-white py-16 md:py-24 text-center rounded-lg shadow-xl mx-4 md:mx-auto my-8 max-w-6xl">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Us in Shaping the Future of Pharma Research</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+                Our vision is to become the leading AI engine behind tomorrow’s most impactful drug discoveries. We are seeking a $500,000 seed round to scale our model infrastructure, hire top talent, and accelerate regulatory setup.
+            </p>
+            <a href="#" class="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition duration-300 ease-in-out">
+                Partner With Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center rounded-t-lg shadow-inner">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 NeuroPharmAI. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
