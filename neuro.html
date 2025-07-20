@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroPharmAI - Accelerating Drug Discovery with AI</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles and Configuration -->
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1F2937; /* gray-800 */
+        }
+
+        /* Indigo Glow Effect */
+        .indigo-text {
+            color: #4B0082;
+            text-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+        }
+        
+        .indigo-button {
+            background-color: #4B0082;
+            color: #FFFFFF;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(75, 0, 130, 0.39);
+        }
+
+        .indigo-button:hover {
+            background-color: #5A009D;
+            box-shadow: 0 6px 20px 0 rgba(75, 0, 130, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .indigo-border {
+            border: 2px solid #4B0082;
+            box-shadow: 0 0 10px rgba(75, 0, 130, 0.3);
+        }
+
+        /* Hero Canvas Background */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Interactive Card Flip */
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; border-radius: 0.75rem; }
+        .flip-card-front { background-color: #f3f4f6; border: 1px solid #e5e7eb; }
+        .flip-card-back { background-color: #4B0082; color: #FFFFFF; transform: rotateY(180deg); }
+
+        /* Scroll Animation */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold indigo-text">NeuroPharmAI</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#problem" class="hover:text-[#4B0082] transition-colors">The Problem</a>
+                <a href="#solution" class="hover:text-[#4B0082] transition-colors">Our Solution</a>
+                <a href="#products" class="hover:text-[#4B0082] transition-colors">Products</a>
+                <a href="#contact" class="indigo-button px-6 py-2">Request a Demo</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white border-t border-gray-200">
+            <a href="#problem" class="block py-2 hover:text-[#4B0082]">The Problem</a>
+            <a href="#solution" class="block py-2 hover:text-[#4B0082]">Our Solution</a>
+            <a href="#products" class="block py-2 hover:text-[#4B0082]">Products</a>
+            <a href="#contact" class="block mt-4 indigo-button text-center px-6 py-2">Request a Demo</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <canvas id="hero-canvas"></canvas>
+        <div class="relative z-10 p-6">
+            <img src="https://placehold.co/300x300/FFFFFF/4B0082?text=NeuroPharmAI" alt="AI Brain Graphic" class="mx-auto mb-8 rounded-full border-4 border-[#4B0082] shadow-lg">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-wider mb-4 text-gray-900">
+                The Future of Medicine, <span class="indigo-text">Accelerated</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-600">
+                We leverage cutting-edge artificial intelligence to drastically reduce the time, cost, and failure rate of drug discovery, making life-saving therapies accessible sooner.
+            </p>
+            <a href="#contact" class="indigo-button px-10 py-4 text-lg">Request a Demo</a>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="py-20 sm:py-32 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Breaking the Pharma <span class="indigo-text">Logjam</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-600">The traditional drug development pipeline is broken. It's too slow, too expensive, and too prone to failure. We're changing the paradigm.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-md">
+                    <h3 class="text-2xl font-bold mb-6 text-red-600 text-center">The Old Way: A High-Risk Gamble</h3>
+                    <ul class="space-y-4 text-lg text-gray-700">
+                        <li class="flex items-start"><span class="text-red-500 mr-3 text-2xl">✗</span> <div><strong class="font-bold text-gray-800">10-15 Years to Market:</strong> A decade or more of research for a single drug.</div></li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 text-2xl">✗</span> <div><strong class="font-bold text-gray-800">Over $2 Billion Cost:</strong> The average expense for one successful drug launch.</div></li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 text-2xl">✗</span> <div><strong class="font-bold text-gray-800">90% Failure Rate:</strong> The vast majority of candidates fail during clinical trials.</div></li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg border border-indigo-300 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 indigo-text text-center">The NeuroPharmAI Way: Intelligent Discovery</h3>
+                     <ul class="space-y-4 text-lg text-gray-700">
+                        <li class="flex items-start"><span class="text-indigo-500 mr-3 text-2xl">✓</span> <div><strong class="font-bold text-gray-800">Accelerated Timelines:</strong> Slash years off the R&D lifecycle with rapid, accurate predictions.</div></li>
+                        <li class="flex items-start"><span class="text-indigo-500 mr-3 text-2xl">✓</span> <div><strong class="font-bold text-gray-800">Drastic Cost Reduction:</strong> Minimize wasted resources by focusing only on viable candidates.</div></li>
+                        <li class="flex items-start"><span class="text-indigo-500 mr-3 text-2xl">✓</span> <div><strong class="font-bold text-gray-800">Higher Success Rates:</strong> Identify potential failures early and de-risk the entire development process.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Solution Section -->
+    <section id="solution" class="py-20 sm:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our <span class="indigo-text">Solution</span></h2>
+                <p class="max-w-3xl mx-auto text-gray-600">We've built a suite of AI-powered tools that intervene at every critical stage of drug discovery, from initial design to literature analysis.</p>
+                <img src="https://placehold.co/800x400/FFFFFF/4B0082?text=AI+Analyzing+Molecular+Data" alt="AI analysis graphic" class="mx-auto mt-8 rounded-lg shadow-xl border border-gray-200">
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+                <!-- Card 1 -->
+                <div class="flip-card h-64">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-gray-800">Generative AI for Novel Compounds</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-2">Molecular Design</h3>
+                            <p class="font-medium">Our models create and screen millions of potential molecules, identifying those with the highest probability of success.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="flip-card h-64">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-gray-800">AI-Powered Safety Profiles</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-2">Predictive Toxicology</h3>
+                            <p class="font-medium">We predict toxicity and side effects before preclinical trials, saving immense time and resources.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="flip-card h-64">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-gray-800">New Life for Existing Drugs</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-2">Drug Repurposing</h3>
+                            <p class="font-medium">Our RepurposeNet platform uses deep learning to find new therapeutic uses for already-approved drugs.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="flip-card h-64">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-gray-800">Automated Biomedical Insights</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="text-xl font-bold mb-2">Literature Mining</h3>
+                            <p class="font-medium">The BioNLP Insight Engine instantly synthesizes decades of research, uncovering connections humans might miss.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 sm:py-32 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our Suite of <span class="indigo-text">AI-Powered Tools</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-600">A modular, integrated platform designed to meet the diverse needs of modern pharmaceutical research.</p>
+            </div>
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="flex border-b border-gray-300 mb-8">
+                    <button data-tab="molecule-predict" class="product-tab active-tab text-lg font-semibold p-4 flex-1 border-b-2 border-indigo-500 text-indigo-600">MoleculePredict</button>
+                    <button data-tab="repurpose-net" class="product-tab text-lg font-semibold p-4 flex-1 text-gray-500 border-b-2 border-transparent hover:border-indigo-500 hover:text-indigo-600 transition">RepurposeNet</button>
+                    <button data-tab="bionlp-engine" class="product-tab text-lg font-semibold p-4 flex-1 text-gray-500 border-b-2 border-transparent hover:border-indigo-500 hover:text-indigo-600 transition">BioNLP Engine</button>
+                    <button data-tab="ai-lab" class="product-tab text-lg font-semibold p-4 flex-1 text-gray-500 border-b-2 border-transparent hover:border-indigo-500 hover:text-indigo-600 transition">AI Drug Lab</button>
+                </div>
+                <div id="product-content" class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Content will be injected here by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 sm:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">From Data to Discovery in <span class="indigo-text">Three Steps</span></h2>
+            </div>
+            <div class="relative max-w-2xl mx-auto">
+                <!-- The connecting line -->
+                <div class="absolute left-1/2 top-0 h-full w-1 bg-gray-200 -translate-x-1/2"></div>
+                
+                <!-- Step 1 -->
+                <div class="relative mb-16 reveal">
+                    <div class="absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-indigo-500 rounded-full border-4 border-white shadow-lg"></div>
+                    <div class="ml-[calc(50%_+_2rem)] bg-gray-100 p-6 rounded-lg border border-gray-200">
+                        <h3 class="text-xl font-bold indigo-text mb-2">1. Ingest Data</h3>
+                        <p class="text-gray-600">Our platform aggregates vast datasets, including chemical libraries, genomic information, and millions of research publications.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                 <div class="relative mb-16 reveal">
+                    <div class="absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-indigo-500 rounded-full border-4 border-white shadow-lg"></div>
+                    <div class="mr-[calc(50%_+_2rem)] bg-gray-100 p-6 rounded-lg border border-gray-200 text-right">
+                        <h3 class="text-xl font-bold indigo-text mb-2">2. Train & Run Models</h3>
+                        <p class="text-gray-600">We apply a powerful combination of deep learning, generative AI, and systems biology to analyze the data.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative reveal">
+                    <div class="absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-indigo-500 rounded-full border-4 border-white shadow-lg"></div>
+                    <div class="ml-[calc(50%_+_2rem)] bg-gray-100 p-6 rounded-lg border border-gray-200">
+                        <h3 class="text-xl font-bold indigo-text mb-2">3. Output Candidates</h3>
+                        <p class="text-gray-600">The system outputs a shortlist of high-potential, safe, and effective drug candidates ready for the next stage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team" class="py-20 sm:py-32 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">The <span class="indigo-text">Minds</span> Behind the Mission</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Our multidisciplinary founding team brings together experts in AI, pharmacology, computational biology, and enterprise software to solve medicine's biggest challenges.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+                <!-- Team Member 1 -->
+                <div class="text-center group">
+                    <img src="https://placehold.co/200x200/e5e7eb/1f2937?text=CEO" alt="Founder/CEO" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 group-hover:border-indigo-500 group-hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-900">Founder/CEO</h3>
+                    <p class="text-gray-600">Visionary with a track record in AI and HealthTech.</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="text-center group">
+                    <img src="https://placehold.co/200x200/e5e7eb/1f2937?text=CTO" alt="CTO" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 group-hover:border-indigo-500 group-hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-900">CTO</h3>
+                    <p class="text-gray-600">Expert in deep learning and bioinformatics.</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="text-center group">
+                    <img src="https://placehold.co/200x200/e5e7eb/1f2937?text=Scientist" alt="Chief Scientist" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 group-hover:border-indigo-500 group-hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-900">Chief Scientist</h3>
+                    <p class="text-gray-600">A former drug researcher with hands-on R&D experience.</p>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="text-center group">
+                    <img src="https://placehold.co/200x200/e5e7eb/1f2937?text=Advisors" alt="Advisors" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 group-hover:border-indigo-500 group-hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-900">Advisors</h3>
+                    <p class="text-gray-600">Seasoned pharma executives and renowned AI researchers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA Section -->
+    <section id="contact" class="py-20 sm:py-32 bg-white">
+        <div class="container mx-auto px-6 text-center bg-gray-100/70 py-16 rounded-lg border border-gray-200 reveal">
+            <p class="text-xl md:text-2xl italic text-gray-600 mb-8 max-w-3xl mx-auto">“AI won’t replace scientists. But scientists using AI will replace those who don’t.”</p>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900">Join Us in Shaping the Future of <span class="indigo-text">Pharmaceutical Research</span></h2>
+            <p class="max-w-xl mx-auto text-gray-600 mb-8">We are seeking a $500,000 seed round to scale our infrastructure and accelerate development. Partner with us to redefine medicine.</p>
+            <a href="mailto:contact@neuropharmai.com" class="indigo-button px-12 py-5 text-xl">Partner With Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-gray-500 py-8 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 NeuroPharmAI. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-indigo-600">LinkedIn</a>
+                <a href="#" class="hover:text-indigo-600">Twitter</a>
+                <a href="mailto:contact@neuropharmai.com" class="hover:text-indigo-600">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero background canvas animation
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray;
+
+        const mouse = {
+            x: null,
+            y: null,
+            radius: (canvas.height/120) * (canvas.width/120)
+        }
+
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = '#e5e7eb'; // gray-200
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius + this.size){
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                        this.x += 5;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 5;
+                    }
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                        this.y += 5;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 5;
+                    }
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 3) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 0.4) - 0.2;
+                let directionY = (Math.random() * 0.4) - 0.2;
+                let color = '#e5e7eb';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance/20000);
+                        ctx.strokeStyle = `rgba(75, 0, 130, ${opacityValue})`; // Indigo
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0,0,innerWidth, innerHeight);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        window.addEventListener('resize', function() {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            mouse.radius = (canvas.height/120) * (canvas.width/120);
+            init();
+        });
+
+        window.addEventListener('mouseout', function() {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        init();
+        animate();
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Product Tabs
+        const productTabs = document.querySelectorAll('.product-tab');
+        const productContent = document.getElementById('product-content');
+        
+        const productsData = {
+            'molecule-predict': {
+                title: 'MoleculePredict',
+                description: 'An AI-powered engine for high-speed small molecule screening and property prediction. Perfect for identifying the most promising drug candidates from the start.',
+                image: 'https://placehold.co/400x300/f3f4f6/4B0082?text=MoleculePredict+UI'
+            },
+            'repurpose-net': {
+                title: 'RepurposeNet',
+                description: 'A deep learning platform designed to identify new indications for existing drugs, opening up new revenue streams and treatment options.',
+                image: 'https://placehold.co/400x300/f3f4f6/4B0082?text=RepurposeNet+Logic'
+            },
+            'bionlp-engine': {
+                title: 'BioNLP Insight Engine',
+                description: 'A powerful search and synthesis tool that uses Large Language Models to mine biomedical and clinical literature for actionable insights.',
+                image: 'https://placehold.co/400x300/f3f4f6/4B0082?text=BioNLP+Insights'
+            },
+            'ai-lab': {
+                title: 'AI Drug Lab (Coming Soon)',
+                description: 'Our next-generation platform featuring collaborative digital twin models to simulate patient-specific responses to new therapies.',
+                image: 'https://placehold.co/400x300/f3f4f6/4B0082?text=AI+Drug+Lab+Sim'
+            }
+        };
+
+        function updateProductContent(tabId) {
+            const data = productsData[tabId];
+            productContent.innerHTML = `
+                <div class="pr-8">
+                    <h3 class="text-3xl font-bold indigo-text mb-4">${data.title}</h3>
+                    <p class="text-lg text-gray-600">${data.description}</p>
+                </div>
+                <div>
+                    <img src="${data.image}" alt="${data.title}" class="rounded-lg shadow-lg w-full border border-gray-200">
+                </div>
+            `;
+        }
+
+        productTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                productTabs.forEach(t => {
+                    t.classList.remove('active-tab', 'border-indigo-500', 'text-indigo-600');
+                    t.classList.add('text-gray-500', 'border-transparent');
+                });
+                tab.classList.add('active-tab', 'border-indigo-500', 'text-indigo-600');
+                tab.classList.remove('text-gray-500', 'border-transparent');
+                updateProductContent(tab.dataset.tab);
+            });
+        });
+
+        // Initialize with the first tab
+        updateProductContent('molecule-predict');
+        
+        // Scroll Animations
+        function reveal() {
+          var reveals = document.querySelectorAll(".reveal");
+          for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+              reveals[i].classList.add("active");
+            } else {
+              reveals[i].classList.remove("active");
+            }
+          }
+        }
+
+        window.addEventListener("scroll", reveal);
+        reveal(); // Initial check
+
+    </script>
+</body>
+</html>
