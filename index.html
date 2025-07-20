@@ -53,7 +53,7 @@
 </header>
 
   <!-- HERO -->
-  <section id="hero" class="min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-20 py-16 bg-gradient-to-r from-indigo-50 via-blue-100 to-teal-100">
+  <!-- <section id="hero" class="min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-20 py-16 bg-gradient-to-r from-indigo-50 via-blue-100 to-teal-100">
     <div class="md:w-1/2 space-y-6">
       <h1 class="text-5xl font-extrabold leading-tight text-gray-800">
         Revolutionizing <span class="text-blue-600">Drug Discovery</span> with AI
@@ -66,12 +66,41 @@
     <div class="md:w-1/2 mt-10 md:mt-0">
       <lottie-player 
         src="https://assets4.lottiefiles.com/packages/lf20_2glqweqs.json"  
+        
         background="transparent" speed="1" 
         style="width: 100%; height: 400px;" 
         loop autoplay>
       </lottie-player>
     </div>
-  </section>
+  </section> -->
+  <section id="hero" class="bg-gradient-to-r from-blue-50 to-white pt-28 pb-20 px-6 md:px-20">
+  <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+    <!-- Text Content -->
+    <div class="md:w-1/2 text-center md:text-left">
+      <h1 class="text-5xl font-extrabold leading-tight text-gray-800">
+        Revolutionizing <span class="text-blue-600">Drug Discovery</span> with AI
+      </h1>
+      <p class="text-lg text-gray-700">
+        NeuroPharmAI is transforming pharmaceutical research with advanced AI models that accelerate, de-risk, and personalize drug development. From molecule design to patient-specific simulations, we’re building the future of medicine.
+      </p>
+      <a href="#get-started" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl shadow transition">
+        Get Started
+      </a>
+    </div>
+
+    <!-- Lottie Animation -->
+    <div class="md:w-1/2 flex justify-center">
+      <lottie-player
+        src="https://lottie.host/1fd9e0cb-dc11-4098-a271-034ce07924c8/5LV15XGb7L.json"
+        background="transparent"
+        speed="1"
+        style="width: 100%; max-width: 400px; height: auto;"
+        loop
+        autoplay>
+      </lottie-player>
+    </div>
+  </div>
+</section>
 
   <!-- HOW IT WORKS -->
   <section id="how-it-works" class="px-6 md:px-20 py-16 bg-white">
@@ -159,6 +188,7 @@
     © 2025 NeuroPharmAI. Built with AI & Purpose.
   </footer>
 
+  
   <script>
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
@@ -167,6 +197,9 @@
     menu.classList.toggle('hidden');
   });
 </script>
+
+<!-- Lottie Player Script -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </body>
 </html>
